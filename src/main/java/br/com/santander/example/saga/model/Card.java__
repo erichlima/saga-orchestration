@@ -1,0 +1,48 @@
+package br.com.santander.example.saga.model;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.panache.common.Parameters;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.control.ActivateRequestContext;
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.transaction.Transactional;
+
+@Getter
+@Setter
+@ToString
+@Entity
+@NamedQueries({
+        @NamedQuery(name = "Card.updateBalanceById", query = "update Card c set c.value = :value where c.idCard = :idCard"),
+})
+public class Card extends PanacheEntity {
+    public static final String CARD_NOT_FOUND = "CARD_NOT_FOUND";
+    public static final String BALANCE_INSUFFICIENT = "BALANCE_INSUFFICIENT";
+    public static final String BALANCE_UPDATED = "BALANCE_UPDATED";
+    public static final String BALANCE_RESTORED = "BALANCE_RESTORED";
+
+    public int idCard;
+    public double value;
+    public int pin;
+
+    public static String validateAndUpdateBalance(Card card) {
+        try {
+            Card cardDb = find("idCard", card.getIdCard()).firstResult();
+            /*if (cardDb.getValue() >= card.getValue()) {
+                int valueReturned = update("#Card.updateBalanceById", Parameters.with
+                        ("value", cardDb.getValue() - card.getValue()).
+                        and("idCard", card.idCard));
+                return ((valueReturned == 0)? BALANCE_UPDATED : BALANCE_INSUFFICIENT);
+            }*/
+            return CARD_NOT_FOUND;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+}
