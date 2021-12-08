@@ -47,3 +47,4 @@ jobs:
         run: |
           docker build -f src/main/docker/Dockerfile.native -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          
