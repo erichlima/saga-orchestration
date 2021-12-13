@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: odin-validation-balance
+  labels:
+    app: odin-validation-balance
+spec:
+  selector:
+    matchLabels:
+      app: odin-validation-balance
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: odin-validation-balance        
+    spec:
+      containers:
+        - name: odin
+          image: 589696708747.dkr.ecr.sa-east-1.amazonaws.com/odin-validation-balance:master-5a514057-1639424317
+          env:
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb
+                  key: database_password
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mongdb
+                  key: database_user
+            - name: DATABASE_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: database-name
+                  key: mongodb
