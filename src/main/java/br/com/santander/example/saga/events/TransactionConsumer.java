@@ -42,7 +42,7 @@ public class TransactionConsumer {
                 transaction.stepStatus = ABORTED + "(" + statusReturn + ")";
             logger.info("Validated a transaction: " + transaction.id);
         } catch (Exception ex) {
-            logger.error("Error in transaction: " + transaction.id);
+            logger.error("Error in transaction: " + transaction.id + " - Ex: " + ex.getMessage());
         }
         return transaction;
     }
