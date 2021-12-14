@@ -33,7 +33,6 @@ public class TransactionService {
                         new Document("$set", new Document("balance",document.getDouble("balance")-card.getBalance())));
             } else return Card.BALANCE_INSUFFICIENT;
         } else return Card.CARD_NOT_FOUND;
-        logger.info("Error connecting to database");
         return Card.BALANCE_UPDATED;
     }
 
