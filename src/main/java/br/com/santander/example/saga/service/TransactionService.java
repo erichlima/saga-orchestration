@@ -21,7 +21,6 @@ public class TransactionService {
     MongoClient mongoClient;
 
     private MongoCollection<Document> getCollection(){
-        logger.info("getCollection from mongoDb");
         return mongoClient.getDatabase("transaction").getCollection("card");
     }
 
