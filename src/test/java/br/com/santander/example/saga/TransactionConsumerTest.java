@@ -24,11 +24,11 @@ public class TransactionConsumerTest {
     @Test
     public void testTransactionConsumerTest() {
         InMemorySource<Transaction> transactionIn = connector.source("preview-authorization");
-        InMemorySink<Transaction> transactionOut = connector.sink("preview-authorization-producer");
+        InMemorySink<Transaction> transactionOut = connector.sink("confirmation-authorization");
 
         Transaction transactionFake = new Transaction();
         transactionFake.setId("73707ad2-0732-4592-b7e2-79b07c745e45");
-        transactionFake.setCurrentStep("VALIDATION_PAYMENT");
+        transactionFake.setCurrentStep("STARTED");
         Card card = new Card();
         card.setIdCard("10");
         card.setBalance(20);
@@ -49,7 +49,7 @@ public class TransactionConsumerTest {
     public void testTransaction() {
         Transaction transaction = new Transaction();
         transaction.setId("1");
-        Assertions.assertEquals("2", transaction.id);
+        Assertions.assertEquals("1", transaction.id);
     }
 
 
