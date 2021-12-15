@@ -11,7 +11,7 @@ public class TransactionTest {
     public void testTransaction() {
         Transaction transaction = new Transaction();
         transaction.setId("1");
-        Assertions.assertEquals("2", transaction.id);
+        Assertions.assertEquals("1", transaction.id);
     }
 
 }
