@@ -39,7 +39,7 @@ jobs:
         run: mvn -B package -Pnative --file pom.xml
 
       - name: Run Tests
-        run: mvn test
+        run: mvn surefire-report:report
 
       - name: Test Report
         uses: dorny/test-reporter@v1
