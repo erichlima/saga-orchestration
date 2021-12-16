@@ -56,7 +56,7 @@ spec:
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
-    terminationGracePeriodSeconds: 30
+      terminationGracePeriodSeconds: 30
 status:
   availableReplicas: 1
   conditions:
