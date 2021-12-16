@@ -30,7 +30,7 @@ spec:
         app: odin-validation-balance
     spec:
       containers:
-        - image: 589696708747.dkr.ecr.sa-east-1.amazonaws.com/odin-validation-balance:master-cee46a5c-1639515204
+        - image: 589696708747.dkr.ecr.sa-east-1.amazonaws.com/odin-validation-balance:master-04b7762f-1639686912
           imagePullPolicy: IfNotPresent
           name: odin-validation-balance
           resources: {}
