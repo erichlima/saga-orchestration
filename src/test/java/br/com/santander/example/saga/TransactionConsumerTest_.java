@@ -15,8 +15,8 @@ import javax.inject.Inject;
 
 
 @QuarkusTest
-@QuarkusTestResource(KafkaTestResourceLifecycleManager.class)
-public class TransactionConsumerTest {
+@QuarkusTestResource(KafkaTestResourceLifecycleManager_.class)
+public class TransactionConsumerTest_ {
 
     @Inject @Any
     InMemoryConnector connector;

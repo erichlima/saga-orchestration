@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 @QuarkusTest
-public class TransactionTest {
+public class TransactionTest_ {
     @Test
     public void testTransaction() {
         Transaction transaction = new Transaction();

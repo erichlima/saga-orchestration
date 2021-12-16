@@ -6,7 +6,7 @@ import io.smallrye.reactive.messaging.connectors.InMemoryConnector;
 import java.util.HashMap;
 import java.util.Map;
 
-public class KafkaTestResourceLifecycleManager implements QuarkusTestResourceLifecycleManager {
+public class KafkaTestResourceLifecycleManager_ implements QuarkusTestResourceLifecycleManager {
     @Override
     public Map<String, String> start() {
         Map<String, String> env = new HashMap<>();
