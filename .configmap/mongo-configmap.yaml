@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: mongodb-configmap
 data:
-  database-url: preview-authorization
+  DATABASE_URL: preview-authorization
