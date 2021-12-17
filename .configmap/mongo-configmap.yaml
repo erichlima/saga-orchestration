@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: mongodb-configmap
 data:
-  database-url: 180.0.214.83:27017/transaction
+  database-url: 180.0.252.182:9092
