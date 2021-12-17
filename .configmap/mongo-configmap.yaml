@@ -4,3 +4,5 @@ metadata:
   name: mongodb-configmap
 data:
   MONGO_DATABASE_URL: 180.0.214.83:27017/transaction?authSource=admin&authMechanism=SCRAM-SHA-1
+  MONGO_CONFIGMAP_USER: test
+  MONGO_CONFIGMAP_PASSWORD: test123

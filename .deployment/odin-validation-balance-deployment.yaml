@@ -52,6 +52,16 @@ spec:
                 configMapKeyRef:
                   name: mongodb-configmap
                   key: MONGO_DATABASE_URL
+            - name: MONGO_CONFIGMAP_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: mongodb-configmap
+                  key: MONGO_CONFIGMAP_USER
+            - name: MONGO_CONFIGMAP_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: mongodb-configmap
+                  key: MONGO_CONFIGMAP_PASSWORD
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
