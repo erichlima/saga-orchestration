@@ -35,8 +35,8 @@ public class TransactionConsumer {
     public Transaction process(Transaction transaction) {
         logger.info("Got a transaction: " + transaction.id);
         try {
-            String mongoRootPassword = ConfigProvider.getConfig().getValue("secret.mongo.root.password", String.class);
-            logger.info("secret.mongo.root.password: " + mongoRootPassword);
+            String mongoRootPassword = ConfigProvider.getConfig().getValue("mongo-root-password", String.class);
+            logger.info("mongo-root-password: " + mongoRootPassword);
             String statusReturn = transactionService.validateAndUpdateBalance(transaction.getPayload());
             transaction.currentStep = VALIDATION_BALANCE;
             if (statusReturn.equals(BALANCE_UPDATED))
