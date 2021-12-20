@@ -14,6 +14,8 @@ import javax.inject.Inject;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 
+import java.util.Base64;
+
 import static br.com.santander.example.saga.model.Card.BALANCE_UPDATED;
 import static br.com.santander.example.saga.model.Transaction.*;
 
@@ -35,10 +37,6 @@ public class TransactionConsumer {
     public Transaction process(Transaction transaction) {
         logger.info("Got a transaction: " + transaction.id);
         try {
-            String mongoRootPassword = ConfigProvider.getConfig().getValue("mongo-root-password", String.class);
-            logger.info("mongo-root-password: " + mongoRootPassword);
-            String mongoRootPassword2 = ConfigProvider.getConfig().getValue("quarkus.kubernetes.env.mapping.mongo-root-password.with-key", String.class);
-            logger.info("mongo-root-password2: " + mongoRootPassword2);
             String statusReturn = transactionService.validateAndUpdateBalance(transaction.getPayload());
             transaction.currentStep = VALIDATION_BALANCE;
             if (statusReturn.equals(BALANCE_UPDATED))
