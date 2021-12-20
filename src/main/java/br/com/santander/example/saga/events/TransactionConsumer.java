@@ -4,6 +4,7 @@ import br.com.santander.example.saga.events.compensation.TransactionProducerComp
 import br.com.santander.example.saga.model.Card;
 import br.com.santander.example.saga.model.Transaction;
 import br.com.santander.example.saga.service.TransactionService;
+import org.eclipse.microprofile.config.ConfigProvider;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import org.jboss.logging.Logger;
@@ -34,6 +35,8 @@ public class TransactionConsumer {
     public Transaction process(Transaction transaction) {
         logger.info("Got a transaction: " + transaction.id);
         try {
+            String mongoRootPassword = ConfigProvider.getConfig().getValue("secret.mongo.root.password", String.class);
+            logger.info("secret.mongo.root.password: " + mongoRootPassword);
             String statusReturn = transactionService.validateAndUpdateBalance(transaction.getPayload());
             transaction.currentStep = VALIDATION_BALANCE;
             if (statusReturn.equals(BALANCE_UPDATED))
