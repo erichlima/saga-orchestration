@@ -37,7 +37,8 @@ public class TransactionConsumer {
         try {
             String mongoRootPassword = ConfigProvider.getConfig().getValue("mongo-root-password", String.class);
             logger.info("mongo-root-password: " + mongoRootPassword);
-
+            String mongoRootPassword2 = ConfigProvider.getConfig().getValue("quarkus.kubernetes.env.mapping.mongo-root-password.with-key", String.class);
+            logger.info("mongo-root-password2: " + mongoRootPassword2);
             String statusReturn = transactionService.validateAndUpdateBalance(transaction.getPayload());
             transaction.currentStep = VALIDATION_BALANCE;
             if (statusReturn.equals(BALANCE_UPDATED))
